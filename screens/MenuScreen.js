@@ -1,10 +1,10 @@
-import { FlatList, View, StyleSheet, ScrollView } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { Avatar, ListItem } from "react-native-elements";
 
 const MenuScreen = (props) => {
   const renderMenuItem = ({ item: menu }) => {
     return (
-      <ListItem style={styles.container}>
+      <ListItem style={styles.container} onPress={() => props.onPress(menu.id)}>
         <Avatar source={menu.image} size={120} />
         <ListItem.Content>
           <ListItem.Title style={styles.name}>{menu.name}</ListItem.Title>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 10,
-    marginTop: 40,
+    marginTop: 20,
   },
 });
 
