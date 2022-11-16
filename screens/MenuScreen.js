@@ -1,13 +1,20 @@
-import { FlatList } from "react-native";
+import { FlatList, View, StyleSheet, ScrollView } from "react-native";
 import { Avatar, ListItem } from "react-native-elements";
 
 const MenuScreen = (props) => {
   const renderMenuItem = ({ item: menu }) => {
     return (
-      <ListItem>
+      <ListItem style={styles.container}>
         <Avatar source={menu.image} rounded />
-        <ListItem.Title>{menu.name}</ListItem.Title>
-        <ListItem.Subtitle>{menu.description}</ListItem.Subtitle>
+        <ListItem.Content>
+          <ListItem.Title style={styles.name}>{menu.name}</ListItem.Title>
+          <ListItem.Subtitle style={styles.description}>
+            {menu.description}
+          </ListItem.Subtitle>
+          <ListItem.Subtitle style={styles.price}>
+            {menu.price}
+          </ListItem.Subtitle>
+        </ListItem.Content>
       </ListItem>
     );
   };
@@ -16,8 +23,26 @@ const MenuScreen = (props) => {
       data={props.menu}
       renderItem={renderMenuItem}
       keyExtractor={(item) => item.id.toString()}
-    ></FlatList>
+    />
   );
 };
+
+const styles = StyleSheet.create({
+  description: {
+    justifyContent: "center",
+    textAlign: "center",
+  },
+  name: {
+    fontSize: 18,
+    color: "#CD5C5C",
+  },
+  price: {
+    color: "#FFB6C1",
+  },
+  container: {
+    padding: 10,
+    marginTop: 40,
+  },
+});
 
 export default MenuScreen;
