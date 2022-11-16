@@ -5,7 +5,7 @@ const MenuScreen = (props) => {
   const renderMenuItem = ({ item: menu }) => {
     return (
       <ListItem style={styles.container}>
-        <Avatar source={menu.image} rounded />
+        <Avatar source={menu.image} size={120} />
         <ListItem.Content>
           <ListItem.Title style={styles.name}>{menu.name}</ListItem.Title>
           <ListItem.Subtitle style={styles.description}>
@@ -30,11 +30,10 @@ const MenuScreen = (props) => {
 const styles = StyleSheet.create({
   description: {
     justifyContent: "center",
-    textAlign: "center",
   },
   name: {
     fontSize: 18,
-    color: "#CD5C5C",
+    color: "#DB7093",
   },
   price: {
     color: "#FFB6C1",
