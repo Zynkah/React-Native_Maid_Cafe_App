@@ -1,25 +1,38 @@
 import { Platform } from "react-native";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { View, StyleSheet } from "react-native";
 import MenuScreen from "./MenuScreen";
 import MenuInfoScreen from "./MenuInfoScreen";
-// import HomeScreen from "./HomeScreen";
+import HomeScreen from "./HomeScreen";
 // import ContactScreen from "./ContactScreen";
 // import MaidScreen from "./MaidScreen";
+
+const Drawer = createDrawerNavigator();
+
+const screenOptions = {
+  headerTintColor: "#fff",
+  headerStyle: { backgroundColor: "#DB7093" },
+};
+
+const HomeNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: "Home" }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const MenuNavigator = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator
-      initialRouteName="Menu"
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#DB7093",
-        },
-        headerTintColor: "#fff",
-      }}
-    >
+    <Stack.Navigator initialRouteName="Menu" screenOptions={screenOptions}>
       <Stack.Screen name="Menu" component={MenuScreen} />
       <Stack.Screen name="MenuInfo" component={MenuInfoScreen} />
     </Stack.Navigator>
@@ -29,14 +42,18 @@ const MenuNavigator = () => {
 const Main = () => {
   return (
     <View style={styles.mainView}>
-      <MenuNavigator />
-      {/* <MenuScreen
-        menu={MenuScreen}
-        onPress={(menuId) => setSelectedMenuId(menuId)}
-      />
-      <MenuInfoScreen
-        menu={menu.filter((menu) => menu.id === selectedMenuId)[0]}
-      /> */}
+      <Drawer.Navigator initialRouteName="Home" drawerStyle="#DB7093">
+        <Drawer.Screen
+          name="Home"
+          component={HomeNavigator}
+          options={{ title: "Home" }}
+        />
+        <Drawer.Screen
+          name="Menu"
+          component={MenuNavigator}
+          options={{ title: "Menu" }}
+        />
+      </Drawer.Navigator>
     </View>
   );
 };
