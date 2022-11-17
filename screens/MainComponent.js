@@ -6,8 +6,8 @@ import { View, StyleSheet } from "react-native";
 import MenuScreen from "./MenuScreen";
 import MenuInfoScreen from "./MenuInfoScreen";
 import HomeScreen from "./HomeScreen";
-// import ContactScreen from "./ContactScreen";
-// import MaidScreen from "./MaidScreen";
+import ContactScreen from "./ContactScreen";
+import MaidScreen from "./MaidScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -39,6 +39,31 @@ const MenuNavigator = () => {
   );
 };
 
+const MaidNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Maids"
+        component={MaidScreen}
+        options={{ title: "Maids" }}
+      />
+    </Stack.Navigator>
+  );
+};
+const ContactNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Contact Us"
+        component={ContactScreen}
+        options={{ title: "Contact Us" }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const Main = () => {
   return (
     <View style={styles.mainView}>
@@ -52,6 +77,16 @@ const Main = () => {
           name="Menu"
           component={MenuNavigator}
           options={{ title: "Menu" }}
+        />
+        <Drawer.Screen
+          name="Maids"
+          component={MaidNavigator}
+          options={{ title: "Maids" }}
+        />
+        <Drawer.Screen
+          name="Contact Us"
+          component={ContactNavigator}
+          options={{ title: "Contact Us" }}
         />
       </Drawer.Navigator>
     </View>
