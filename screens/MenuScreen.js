@@ -1,10 +1,17 @@
+import { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { Avatar, ListItem } from "react-native-elements";
+import { MENU } from "../shared/MENU";
 
-const MenuScreen = (props) => {
+const MenuScreen = ({ navigation }) => {
+  const [menu, setMenu] = useState(MENU);
+
   const renderMenuItem = ({ item: menu }) => {
     return (
-      <ListItem style={styles.container} onPress={() => props.onPress(menu.id)}>
+      <ListItem
+        style={styles.container}
+        onPress={() => navigation.navigate("MenuInfo", { menu })}
+      >
         <Avatar source={menu.image} size={120} />
         <ListItem.Content>
           <ListItem.Title style={styles.name}>{menu.name}</ListItem.Title>
@@ -20,7 +27,7 @@ const MenuScreen = (props) => {
   };
   return (
     <FlatList
-      data={props.menu}
+      data={menu}
       renderItem={renderMenuItem}
       keyExtractor={(item) => item.id.toString()}
     />

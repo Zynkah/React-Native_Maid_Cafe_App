@@ -1,6 +1,7 @@
 import RenderMenu from "../features/menu/RenderMenu";
 
-const MenuInfoScreen = (props) => {
-  return <RenderMenu menu={props.menu} />;
+const MenuInfoScreen = ({ route }) => {
+  const { menu } = route.params;
+  return <RenderMenu menu={menu} />;
 };
 export default MenuInfoScreen;
