@@ -9,6 +9,7 @@ import HomeScreen from "./HomeScreen";
 import ContactScreen from "./ContactScreen";
 import MaidScreen from "./MaidScreen";
 import CartScreen from "./CartScreen";
+import BanquetsScreen from "./BanquetsScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -48,6 +49,19 @@ const MaidNavigator = () => {
         name="Maids"
         component={MaidScreen}
         options={{ title: "Maids" }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const BanquetsNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Banquets"
+        component={BanquetsScreen}
+        options={{ title: "Banquets" }}
       />
     </Stack.Navigator>
   );
@@ -97,6 +111,11 @@ const Main = () => {
           name="Maids"
           component={MaidNavigator}
           options={{ title: "Maids" }}
+        />
+        <Drawer.Screen
+          name="Banquets"
+          component={BanquetsNavigator}
+          options={{ title: "Banquets" }}
         />
         <Drawer.Screen
           name="Shopping Cart"
