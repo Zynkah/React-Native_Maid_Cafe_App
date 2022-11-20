@@ -1,8 +1,8 @@
-import { Platform } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
+import { Icon } from "react-native-elements";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { View, StyleSheet } from "react-native";
 import MenuScreen from "./MenuScreen";
 import MenuInfoScreen from "./MenuInfoScreen";
 import HomeScreen from "./HomeScreen";
@@ -25,7 +25,17 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: "Home" }}
+        options={({ navigation }) => ({
+          title: "Home",
+          headerLeft: () => (
+            <Icon
+              name="home"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -35,8 +45,36 @@ const MenuNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator initialRouteName="Menu" screenOptions={screenOptions}>
-      <Stack.Screen name="Menu" component={MenuScreen} />
-      <Stack.Screen name="MenuInfo" component={MenuInfoScreen} />
+      <Stack.Screen
+        name="Menu"
+        component={MenuScreen}
+        options={({ navigation }) => ({
+          title: "Menu",
+          headerLeft: () => (
+            <Icon
+              name="cutlery"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="MenuInfo"
+        component={MenuInfoScreen}
+        options={({ navigation }) => ({
+          title: "Menu Item Details",
+          headerLeft: () => (
+            <Icon
+              name="book"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
     </Stack.Navigator>
   );
 };
@@ -48,7 +86,17 @@ const MaidNavigator = () => {
       <Stack.Screen
         name="Maids"
         component={MaidScreen}
-        options={{ title: "Maids" }}
+        options={({ navigation }) => ({
+          title: "Maids",
+          headerLeft: () => (
+            <Icon
+              name="female"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -61,7 +109,17 @@ const BanquetsNavigator = () => {
       <Stack.Screen
         name="Banquets"
         component={BanquetsScreen}
-        options={{ title: "Banquets" }}
+        options={({ navigation }) => ({
+          title: "Banquets",
+          headerLeft: () => (
+            <Icon
+              name="gift"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -72,9 +130,19 @@ const CartNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
-        name="Shopping Cart"
+        name="Cart"
         component={CartScreen}
-        options={{ title: "Shopping Cart" }}
+        options={({ navigation }) => ({
+          title: "Cart",
+          headerLeft: () => (
+            <Icon
+              name="shopping-cart"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -87,7 +155,17 @@ const ContactNavigator = () => {
       <Stack.Screen
         name="Contact Us"
         component={ContactScreen}
-        options={{ title: "Contact Us" }}
+        options={({ navigation }) => ({
+          title: "Contact Us",
+          headerLeft: () => (
+            <Icon
+              name="address-card"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -100,32 +178,77 @@ const Main = () => {
         <Drawer.Screen
           name="Home"
           component={HomeNavigator}
-          options={{ title: "Home" }}
+          options={{
+            title: "Home",
+            drawerIcon: ({ color }) => (
+              <Icon name="home" type="font-awesome" size={24} color={color} />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Menu"
           component={MenuNavigator}
-          options={{ title: "Menu" }}
+          options={{
+            title: "Menu",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="cutlery"
+                type="font-awesome"
+                size={24}
+                color={color}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Maids"
           component={MaidNavigator}
-          options={{ title: "Maids" }}
+          options={{
+            title: "Maids",
+            drawerIcon: ({ color }) => (
+              <Icon name="female" type="font-awesome" size={24} color={color} />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Banquets"
           component={BanquetsNavigator}
-          options={{ title: "Banquets" }}
+          options={{
+            title: "Banquets",
+            drawerIcon: ({ color }) => (
+              <Icon name="gift" type="font-awesome" size={24} color={color} />
+            ),
+          }}
         />
         <Drawer.Screen
-          name="Shopping Cart"
+          name="Cart"
           component={CartNavigator}
-          options={{ title: "Shopping Cart" }}
+          options={{
+            title: "Cart",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="shopping-cart"
+                type="font-awesome"
+                size={24}
+                color={color}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Contact Us"
           component={ContactNavigator}
-          options={{ title: "Contact Us" }}
+          options={{
+            title: "Contact Us",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="address-card"
+                type="font-awesome"
+                size={24}
+                color={color}
+              />
+            ),
+          }}
         />
       </Drawer.Navigator>
     </View>
@@ -136,6 +259,11 @@ const styles = StyleSheet.create({
   mainView: {
     flex: 1,
     paddingTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
+  },
+  stackIcon: {
+    marginLeft: 30,
+    color: "#fff",
+    fontSize: 24,
   },
 });
 
