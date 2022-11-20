@@ -1,8 +1,13 @@
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View, Text, Image } from "react-native";
 import { Icon } from "react-native-elements";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from "@react-navigation/drawer";
+import logo from "../assets/img/logo.jpg";
 import MenuScreen from "./MenuScreen";
 import MenuInfoScreen from "./MenuInfoScreen";
 import HomeScreen from "./HomeScreen";
@@ -29,7 +34,7 @@ const HomeNavigator = () => {
           title: "Home",
           headerLeft: () => (
             <Icon
-              name="home"
+              name="coffee"
               type="font-awesome"
               iconStyle={styles.stackIcon}
               onPress={() => navigation.toggleDrawer()}
@@ -171,17 +176,35 @@ const ContactNavigator = () => {
   );
 };
 
+const CustomDrawerContent = (props) => (
+  <DrawerContentScrollView {...props}>
+    <View style={styles.drawerHeader}>
+      <View style={{ flex: 1 }}>
+        <Image source={logo} style={styles.drawerImage} />
+      </View>
+      <View style={{ flex: 2 }}>
+        <Text style={styles.drawerHeaderText}>Zynkah's Maid Cafe</Text>
+      </View>
+    </View>
+    <DrawerItemList {...props} labelStyle={styles.drawerItems} />
+  </DrawerContentScrollView>
+);
+
 const Main = () => {
   return (
     <View style={styles.mainView}>
-      <Drawer.Navigator initialRouteName="Home" drawerStyle="#DB7093">
+      <Drawer.Navigator
+        initialRouteName="Home"
+        drawerContent={CustomDrawerContent}
+        drawerStyle="#DB7093"
+      >
         <Drawer.Screen
           name="Home"
           component={HomeNavigator}
           options={{
             title: "Home",
             drawerIcon: ({ color }) => (
-              <Icon name="home" type="font-awesome" size={24} color={color} />
+              <Icon name="coffee" type="font-awesome" size={24} color={color} />
             ),
           }}
         />
@@ -264,6 +287,29 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     color: "#fff",
     fontSize: 24,
+  },
+  drawerHeader: {
+    backgroundColor: "#DB7093",
+    height: 140,
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    flexDirection: "row",
+  },
+  drawerHeaderText: {
+    color: "#fff",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  drawerImage: {
+    margin: 10,
+    height: 60,
+    width: 60,
+  },
+  drawerItems: {
+    color: "#DB7093",
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });
 
