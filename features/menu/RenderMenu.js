@@ -8,7 +8,7 @@ const RenderMenu = (props) => {
       <Card style={styles.cardContainer}>
         <Card.Image source={menu.image}>
           <View style={styles.container}>
-            <Text style={styles.name}>{menu.name}</Text>
+            <Text style={styles.cardText}>{menu.name}</Text>
           </View>
         </Card.Image>
         <Text style={styles.description}>{menu.description}</Text>
@@ -25,6 +25,14 @@ const RenderMenu = (props) => {
                 ? console.log("Already placed in Cart")
                 : props.markFavorite()
             }
+          />
+          <Icon
+            name="pencil"
+            type="font-awesome"
+            color="#DB7093"
+            raised
+            reverse
+            onPress={() => props.onShowModal()}
           />
         </View>
       </Card>
@@ -50,12 +58,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 20,
   },
-  name: {
-    color: "white",
+  cardText: {
+    textShadowColor: "rgba(0,0,0,1)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 20,
     textAlign: "center",
+    color: "white",
     fontSize: 30,
     fontWeight: "bold",
-    backgroundColor: "#DB7093",
+    backgroundColor: "rgba(219, 112, 147,0.5)",
   },
   description: {
     textAlign: "center",

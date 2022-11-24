@@ -31,8 +31,11 @@ const HomeScreen = () => {
   const featMaid = maids.find((item) => item.featured);
   return (
     <ScrollView>
+      <Text style={styles.title}>Menu</Text>
       <FeaturedItem item={featMenu} />
+      <Text style={styles.title}>Banquet Rooms</Text>
       <FeaturedItem item={featBanquet} />
+      <Text style={styles.title}>Maids</Text>
       <FeaturedItem item={featMaid} />
     </ScrollView>
   );
@@ -44,15 +47,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemName: {
-    color: "white",
+    textShadowColor: "rgba(0,0,0,1)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 20,
     textAlign: "center",
-    fontSize: 28,
+    color: "white",
+    fontSize: 30,
     fontWeight: "bold",
-    backgroundColor: "#DB7093",
+    backgroundColor: "rgba(219, 112, 147,0.5)",
   },
   itemDescription: {
     margin: 20,
     textAlign: "center",
+  },
+  title: {
+    color: "white",
+    backgroundColor: "rgba(219, 112, 147,0.5)",
+    textAlign: "center",
+    fontSize: 20,
+    margin: 10,
   },
 });
 
