@@ -15,6 +15,7 @@ import ContactScreen from "./ContactScreen";
 import MaidScreen from "./MaidScreen";
 import CartScreen from "./CartScreen";
 import BanquetsScreen from "./BanquetsScreen";
+import ReservationScreen from "./ReservationScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -176,6 +177,29 @@ const ContactNavigator = () => {
   );
 };
 
+const ReservationNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Reservation"
+        component={ReservationScreen}
+        options={({ navigation }) => ({
+          title: "Reservation Search",
+          headerLeft: () => (
+            <Icon
+              name="clock-o"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const CustomDrawerContent = (props) => (
   <DrawerContentScrollView {...props}>
     <View style={styles.drawerHeader}>
@@ -240,6 +264,22 @@ const Main = () => {
             title: "Banquets",
             drawerIcon: ({ color }) => (
               <Icon name="gift" type="font-awesome" size={24} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="ReserveTable"
+          component={ReservationNavigator}
+          options={{
+            title: "Reserve a Table",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="clock-o"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
             ),
           }}
         />
