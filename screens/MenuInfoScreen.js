@@ -8,7 +8,6 @@ import * as Animatable from "react-native-animatable";
 const MenuInfoScreen = ({ route }) => {
   const { menu } = route.params;
   const [comments, setComments] = useState(COMMENTS);
-  const [favorite, setFavorite] = useState(false);
 
   //
 
@@ -76,8 +75,6 @@ const MenuInfoScreen = ({ route }) => {
             >
               <RenderMenu
                 menu={menu}
-                isFavorite={favorite}
-                markFavorite={() => setFavorite(true)}
                 onShowModal={() => setShowModal(!showModal)}
               />
               <Text style={styles.commentsTitle}>Comments</Text>

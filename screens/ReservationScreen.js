@@ -65,7 +65,8 @@ const ReservationScreen = () => {
           <Switch
             style={styles.formItem}
             value={valet}
-            trackColor={{ true: "#DB7093", false: null }}
+            trackColor={{ true: "#FFB6C1", false: null }}
+            thumbColor={"#cc3366"}
             onValueChange={(value) => setValet(value)}
           />
         </View>
