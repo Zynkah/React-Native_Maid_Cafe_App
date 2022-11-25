@@ -261,7 +261,7 @@ const Main = () => {
           name="Banquets"
           component={BanquetsNavigator}
           options={{
-            title: "Banquets",
+            title: "Banquet Rooms",
             drawerIcon: ({ color }) => (
               <Icon name="gift" type="font-awesome" size={24} color={color} />
             ),
@@ -271,7 +271,7 @@ const Main = () => {
           name="ReserveTable"
           component={ReservationNavigator}
           options={{
-            title: "Reserve a Table",
+            title: "Reservations",
             drawerIcon: ({ color }) => (
               <Icon
                 name="clock-o"

@@ -36,11 +36,12 @@ const MenuScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   description: {
-    justifyContent: "center",
+    fontSize: 14,
+    color: "#db7094",
   },
   name: {
-    fontSize: 18,
-    color: "#DB7093",
+    color: "#cc3366",
+    fontSize: 22,
   },
   price: {
     color: "#FFB6C1",
