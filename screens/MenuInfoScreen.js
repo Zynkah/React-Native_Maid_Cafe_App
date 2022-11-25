@@ -91,9 +91,10 @@ const MenuInfoScreen = ({ route }) => {
       >
         <View style={styles.modal}>
           <Rating
+            type="heart"
             showRating={true}
             startingValue={rating}
-            imageSize={40}
+            imageSize={30}
             onFinishingRating={(rating) => setRating(rating)}
             style={{ paddingVertical: 10 }}
           ></Rating>
@@ -117,7 +118,7 @@ const MenuInfoScreen = ({ route }) => {
                 handleSubmit();
                 resetForm();
               }}
-              color="#5637DD"
+              color="#cc3366"
               title="Submit"
             ></Button>
           </View>
@@ -127,7 +128,7 @@ const MenuInfoScreen = ({ route }) => {
                 setShowModal(!showModal);
                 resetForm();
               }}
-              color="#808080"
+              color="#FFB6C1"
               title="Cancel"
             ></Button>
           </View>
