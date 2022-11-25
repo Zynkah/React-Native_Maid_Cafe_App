@@ -32,6 +32,7 @@ const MenuInfoScreen = ({ route }) => {
     return (
       <View style={styles.commentItem}>
         <Text style={{ fontSize: 14 }}>{item.text}</Text>
+
         <Rating
           readonly
           startingValue={item.rating}
@@ -44,6 +45,7 @@ const MenuInfoScreen = ({ route }) => {
         >
           {item.rating}
         </Rating>
+
         <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
         <Text
           style={{ fontSize: 12 }}
@@ -74,6 +76,7 @@ const MenuInfoScreen = ({ route }) => {
           </>
         }
       />
+
       <Modal
         animationType="slide"
         transparent={false}
