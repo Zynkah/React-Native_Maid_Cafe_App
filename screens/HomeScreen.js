@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { Text, View, Animated, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { Card } from "react-native-elements";
 import { MENU } from "../shared/MENU";
 import { BANQUETS } from "../shared/BANQUETS";
 import { MAIDS } from "../shared/MAIDS";
+import * as Animatable from "react-native-animatable";
 
 const FeaturedItem = ({ item }) => {
   if (item) {
@@ -26,30 +27,21 @@ const HomeScreen = () => {
   const [banquets, setBanquets] = useState(BANQUETS);
   const [maids, setMaids] = useState(MAIDS);
 
-  const scaleValue = useRef(new Animated.Value(0)).current;
-  const scaleAnimation = Animated.timing(scaleValue, {
-    toValue: 1,
-    duration: 1000,
-    useNativeDriver: true,
-  });
-
   const featMenu = menu.find((item) => item.featured);
   const featBanquet = banquets.find((item) => item.featured);
   const featMaid = maids.find((item) => item.featured);
 
-  useEffect(() => {
-    scaleAnimation.start();
-  }, []);
-
   return (
-    <Animated.ScrollView style={{ transform: [{ scale: scaleValue }] }}>
-      <Text style={styles.title}>Menu</Text>
-      <FeaturedItem item={featMenu} />
-      <Text style={styles.title}>Banquet Rooms</Text>
-      <FeaturedItem item={featBanquet} />
-      <Text style={styles.title}>Maids</Text>
-      <FeaturedItem item={featMaid} />
-    </Animated.ScrollView>
+    <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+      <ScrollView>
+        <Text style={styles.title}>Menu</Text>
+        <FeaturedItem item={featMenu} />
+        <Text style={styles.title}>Banquet Rooms</Text>
+        <FeaturedItem item={featBanquet} />
+        <Text style={styles.title}>Maids</Text>
+        <FeaturedItem item={featMaid} />
+      </ScrollView>
+    </Animatable.View>
   );
 };
 

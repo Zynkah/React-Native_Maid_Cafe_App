@@ -3,6 +3,7 @@ import { FlatList, StyleSheet, Text, View, Button, Modal } from "react-native";
 import { COMMENTS } from "../shared/COMMENTS";
 import RenderMenu from "../features/menu/RenderMenu";
 import { Input, Rating } from "react-native-elements";
+import * as Animatable from "react-native-animatable";
 
 const MenuInfoScreen = ({ route }) => {
   const { menu } = route.params;
@@ -30,27 +31,29 @@ const MenuInfoScreen = ({ route }) => {
 
   const renderCommentItem = ({ item }) => {
     return (
-      <View style={styles.commentItem}>
-        <Text style={{ fontSize: 14 }}>{item.text}</Text>
+      <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+        <View style={styles.commentItem}>
+          <Text style={{ fontSize: 14 }}>{item.text}</Text>
 
-        <Rating
-          readonly
-          startingValue={item.rating}
-          imageSize={10}
-          style={{
-            paddingVertical: 5,
-            fontSize: 12,
-            alignItems: "flex-start",
-          }}
-        >
-          {item.rating}
-        </Rating>
+          <Rating
+            readonly
+            startingValue={item.rating}
+            imageSize={10}
+            style={{
+              paddingVertical: 5,
+              fontSize: 12,
+              alignItems: "flex-start",
+            }}
+          >
+            {item.rating}
+          </Rating>
 
-        <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
-        <Text
-          style={{ fontSize: 12 }}
-        >{`-- ${item.author}, ${item.date}`}</Text>
-      </View>
+          <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
+          <Text
+            style={{ fontSize: 12 }}
+          >{`-- ${item.author}, ${item.date}`}</Text>
+        </View>
+      </Animatable.View>
     );
   };
 
@@ -66,13 +69,19 @@ const MenuInfoScreen = ({ route }) => {
         }}
         ListHeaderComponent={
           <>
-            <RenderMenu
-              menu={menu}
-              isFavorite={favorite}
-              markFavorite={() => setFavorite(true)}
-              onShowModal={() => setShowModal(!showModal)}
-            />
-            <Text style={styles.commentsTitle}>Comments</Text>
+            <Animatable.View
+              animation="fadeInDown"
+              duration={2000}
+              delay={1000}
+            >
+              <RenderMenu
+                menu={menu}
+                isFavorite={favorite}
+                markFavorite={() => setFavorite(true)}
+                onShowModal={() => setShowModal(!showModal)}
+              />
+              <Text style={styles.commentsTitle}>Comments</Text>
+            </Animatable.View>
           </>
         }
       />

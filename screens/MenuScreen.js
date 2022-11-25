@@ -2,27 +2,30 @@ import { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { Avatar, ListItem } from "react-native-elements";
 import { MENU } from "../shared/MENU";
+import * as Animatable from "react-native-animatable";
 
 const MenuScreen = ({ navigation }) => {
   const [menu, setMenu] = useState(MENU);
 
   const renderMenuItem = ({ item: menu }) => {
     return (
-      <ListItem
-        style={styles.container}
-        onPress={() => navigation.navigate("MenuInfo", { menu })}
-      >
-        <Avatar source={menu.image} size={120} />
-        <ListItem.Content>
-          <ListItem.Title style={styles.name}>{menu.name}</ListItem.Title>
-          <ListItem.Subtitle style={styles.description}>
-            {menu.description}
-          </ListItem.Subtitle>
-          <ListItem.Subtitle style={styles.price}>
-            {menu.price}
-          </ListItem.Subtitle>
-        </ListItem.Content>
-      </ListItem>
+      <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+        <ListItem
+          style={styles.container}
+          onPress={() => navigation.navigate("MenuInfo", { menu })}
+        >
+          <Avatar source={menu.image} size={120} />
+          <ListItem.Content>
+            <ListItem.Title style={styles.name}>{menu.name}</ListItem.Title>
+            <ListItem.Subtitle style={styles.description}>
+              {menu.description}
+            </ListItem.Subtitle>
+            <ListItem.Subtitle style={styles.price}>
+              {menu.price}
+            </ListItem.Subtitle>
+          </ListItem.Content>
+        </ListItem>
+      </Animatable.View>
     );
   };
   return (
