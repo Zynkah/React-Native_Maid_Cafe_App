@@ -93,6 +93,7 @@ const MenuInfoScreen = ({ route }) => {
         <View style={styles.modal}>
           <Rating
             type="heart"
+            fractions={1}
             showRating={true}
             startingValue={rating}
             imageSize={30}
