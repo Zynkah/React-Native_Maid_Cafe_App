@@ -13,7 +13,6 @@ import MenuInfoScreen from "./MenuInfoScreen";
 import HomeScreen from "./HomeScreen";
 import ContactScreen from "./ContactScreen";
 import MaidScreen from "./MaidScreen";
-import CartScreen from "./CartScreen";
 import BanquetsScreen from "./BanquetsScreen";
 import ReservationScreen from "./ReservationScreen";
 
@@ -116,33 +115,10 @@ const BanquetsNavigator = () => {
         name="Banquets"
         component={BanquetsScreen}
         options={({ navigation }) => ({
-          title: "Banquets",
+          title: "Banquet Rooms",
           headerLeft: () => (
             <Icon
               name="gift"
-              type="font-awesome"
-              iconStyle={styles.stackIcon}
-              onPress={() => navigation.toggleDrawer()}
-            />
-          ),
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const CartNavigator = () => {
-  const Stack = createStackNavigator();
-  return (
-    <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen
-        name="Cart"
-        component={CartScreen}
-        options={({ navigation }) => ({
-          title: "Cart",
-          headerLeft: () => (
-            <Icon
-              name="shopping-cart"
               type="font-awesome"
               iconStyle={styles.stackIcon}
               onPress={() => navigation.toggleDrawer()}
@@ -278,21 +254,6 @@ const Main = () => {
                 type="font-awesome"
                 size={24}
                 iconStyle={{ width: 24 }}
-                color={color}
-              />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="Cart"
-          component={CartNavigator}
-          options={{
-            title: "Cart",
-            drawerIcon: ({ color }) => (
-              <Icon
-                name="shopping-cart"
-                type="font-awesome"
-                size={24}
                 color={color}
               />
             ),

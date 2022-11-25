@@ -7,11 +7,13 @@ import {
   Switch,
   Button,
   Modal,
+  Image,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Platform } from "react-native";
 import * as Animatable from "react-native-animatable";
+import location from "../assets/img/location.jpg";
 
 const ReservationScreen = () => {
   const [guests, setGuests] = useState(1);
@@ -116,6 +118,7 @@ const ReservationScreen = () => {
             />
           </View>
         </Modal>
+        <Image style={styles.image} source={location} />
       </ScrollView>
     </Animatable.View>
   );
@@ -153,6 +156,10 @@ const styles = StyleSheet.create({
   modalText: {
     fontSize: 18,
     margin: 10,
+  },
+  image: {
+    width: 400,
+    height: 400,
   },
 });
 export default ReservationScreen;

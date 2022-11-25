@@ -15,18 +15,6 @@ const RenderMenu = (props) => {
         <Text style={styles.price}>{menu.price}</Text>
         <View style={styles.cardRow}>
           <Icon
-            name={props.isFavorite ? "check" : "shopping-cart"}
-            type="font-awesome"
-            color="#DB7093"
-            raised
-            reverse
-            onPress={() =>
-              props.isFavorite
-                ? console.log("Already placed in Cart")
-                : props.markFavorite()
-            }
-          />
-          <Icon
             name="pencil"
             type="font-awesome"
             color="#DB7093"
