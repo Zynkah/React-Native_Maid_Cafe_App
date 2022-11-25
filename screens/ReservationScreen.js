@@ -41,7 +41,7 @@ const ReservationScreen = () => {
   };
 
   return (
-    <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+    <Animatable.View animation="zoomIn" duration={2000} delay={1000}>
       <ScrollView>
         <View style={styles.formRow}>
           <Text style={styles.formLabel}>Number of guests:</Text>
@@ -130,18 +130,20 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   formLabel: {
-    fontSize: 18,
+    color: "#cc3366",
+    fontSize: 24,
     flex: 2,
   },
   formItem: {
     flex: 1,
+    color: "#cc3366",
   },
   modal: {
     justifyContent: "center",
     margin: 20,
   },
   modalTitle: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: "bold",
     backgroundColor: "#DB7093",
     textAlign: "center",
