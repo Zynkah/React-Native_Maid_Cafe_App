@@ -10,7 +10,7 @@ const ContactScreen = () => {
         <Card wrapperStyle={{ margin: 20, alignItems: "center" }}>
           <Card.Title style={styles.title}>Contact Information</Card.Title>
           <Card.Divider />
-          <Text style={styles.description}>1 Nucamp Way</Text>
+          <Text style={styles.description}>4 Cafe Ave</Text>
           <Text style={styles.description}>Seattle, WA 98001</Text>
           <Text style={styles.description}>U.S.A.</Text>
           <Text style={styles.phone}>Phone: 1-206-555-1234</Text>
