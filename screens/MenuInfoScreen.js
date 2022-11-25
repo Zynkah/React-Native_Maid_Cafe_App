@@ -35,6 +35,7 @@ const MenuInfoScreen = ({ route }) => {
           <Text style={{ fontSize: 14 }}>{item.text}</Text>
 
           <Rating
+            type="heart"
             readonly
             startingValue={item.rating}
             imageSize={10}
