@@ -15,6 +15,13 @@ import ContactScreen from "./ContactScreen";
 import MaidScreen from "./MaidScreen";
 import BanquetsScreen from "./BanquetsScreen";
 import ReservationScreen from "./ReservationScreen";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+
+import { fetchMaids } from "../features/maids/maidsSlice";
+import { fetchMenus } from "../features/menu/menuSlice";
+import { fetchBanquets } from "../features/banquets/banquetsSlice";
+import { fetchComments } from "../features/comments/commentsSlice";
 
 const Drawer = createDrawerNavigator();
 
@@ -191,6 +198,15 @@ const CustomDrawerContent = (props) => (
 );
 
 const Main = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMaids());
+    dispatch(fetchMenus());
+    dispatch(fetchBanquets());
+    dispatch(fetchComments());
+  }, [dispatch]);
+
   return (
     <View style={styles.mainView}>
       <Drawer.Navigator

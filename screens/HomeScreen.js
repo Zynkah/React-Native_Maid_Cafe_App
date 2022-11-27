@@ -1,16 +1,14 @@
-import { useState } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { Card } from "react-native-elements";
-import { MENU } from "../shared/MENU";
-import { BANQUETS } from "../shared/BANQUETS";
-import { MAIDS } from "../shared/MAIDS";
 import * as Animatable from "react-native-animatable";
+import { useSelector } from "react-redux";
+import { baseUrl } from "../shared/baseUrl";
 
 const FeaturedItem = ({ item }) => {
   if (item) {
     return (
       <Card containerStyle={{ padding: 0 }}>
-        <Card.Image source={item.image}>
+        <Card.Image source={{ uri: baseUrl + item.image }}>
           <View style={styles.itemView}>
             <Text style={styles.itemName}>{item.name}</Text>
           </View>
@@ -23,13 +21,13 @@ const FeaturedItem = ({ item }) => {
 };
 
 const HomeScreen = () => {
-  const [menu, setMenu] = useState(MENU);
-  const [banquets, setBanquets] = useState(BANQUETS);
-  const [maids, setMaids] = useState(MAIDS);
+  const menu = useSelector((state) => state.menu);
+  const banquets = useSelector((state) => state.banquets);
+  const maids = useSelector((state) => state.maids);
 
-  const featMenu = menu.find((item) => item.featured);
-  const featBanquet = banquets.find((item) => item.featured);
-  const featMaid = maids.find((item) => item.featured);
+  const featMenu = menu.menusArray.find((item) => item.featured);
+  const featBanquet = banquets.banquetsArray.find((item) => item.featured);
+  const featMaid = maids.maidsArray.find((item) => item.featured);
 
   return (
     <Animatable.View animation="fadeIn" duration={2000} delay={1000}>

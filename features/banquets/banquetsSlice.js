@@ -9,7 +9,7 @@ export const fetchBanquets = createAsyncThunk(
   }
 );
 
-const promotionsSlice = createSlice({
+const banquetsSlice = createSlice({
   name: "banquets",
   initialState: { isLoading: true, errMess: null, banquetsArray: [] },
   reducers: {},
@@ -20,7 +20,7 @@ const promotionsSlice = createSlice({
     [fetchBanquets.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.errMess = null;
-      state.promotionsArray = action.payload;
+      state.banquetsArray = action.payload;
     },
     [fetchBanquets.rejected]: (state, action) => {
       state.isLoading = false;

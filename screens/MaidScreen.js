@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Text, ScrollView, StyleSheet } from "react-native";
 import { Card, ListItem, Avatar } from "react-native-elements";
-import { MAIDS } from "../shared/MAIDS";
 import * as Animatable from "react-native-animatable";
+import { useSelector } from "react-redux";
+import { baseUrl } from "../shared/baseUrl";
 
 const MaidScreen = () => {
-  const [maids, setMaids] = useState(MAIDS);
+  const maids = useSelector((state) => state.maids);
   return (
     <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
       <ScrollView>
@@ -21,10 +22,10 @@ const MaidScreen = () => {
         <Card>
           <Card.Title style={styles.title}>Our Maids</Card.Title>
           <Card.Divider />
-          {maids.map((maid) => {
+          {maids.maidsArray.map((maid) => {
             return (
               <ListItem key={maid.id}>
-                <Avatar source={maid.image} size={100} />
+                <Avatar source={{ uri: baseUrl + maid.image }} size={100} />
                 <ListItem.Content>
                   <ListItem.Title style={styles.title}>
                     {maid.name}

@@ -1,12 +1,13 @@
 import { Text, View, StyleSheet } from "react-native";
 import { Card, Icon } from "react-native-elements";
+import { baseUrl } from "../../shared/baseUrl";
 
 const RenderMenu = (props) => {
   const { menu } = props;
   if (menu) {
     return (
       <Card style={styles.cardContainer}>
-        <Card.Image source={menu.image}>
+        <Card.Image source={{ uri: baseUrl + menu.image }}>
           <View style={styles.container}>
             <Text style={styles.cardText}>{menu.name}</Text>
           </View>

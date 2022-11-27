@@ -6,7 +6,7 @@ export const fetchMenus = createAsyncThunk("menus/fetchMenus", async () => {
   return response.json();
 });
 
-const menusSlice = createSlice({
+const menuSlice = createSlice({
   name: "menus",
   initialState: { isLoading: true, errMess: null, menusArray: [] },
   reducers: {},
@@ -26,4 +26,4 @@ const menusSlice = createSlice({
   },
 });
 
-export const menusReducer = menusSlice.reducer;
+export const menuReducer = menuSlice.reducer;

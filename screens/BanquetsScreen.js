@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { Card, ListItem, Avatar } from "react-native-elements";
-import { BANQUETS } from "../shared/BANQUETS";
 import * as Animatable from "react-native-animatable";
+import { useSelector } from "react-redux";
+import { baseUrl } from "../shared/baseUrl";
 
 const BanquetsScreen = () => {
-  const [banquets, setBanquets] = useState(BANQUETS);
+  const banquets = useSelector((state) => state.banquets);
   return (
     <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
       <ScrollView>
         <Card>
           <Card.Title style={styles.title}>Banquet Rooms</Card.Title>
           <Card.Divider />
-          {banquets.map((banquet) => {
+          {banquets.banquetsArray.map((banquet) => {
             return (
               <ListItem key={banquet.id}>
-                <Avatar source={banquet.image} size={120} />
+                <Avatar source={{ uri: baseUrl + banquet.image }} size={120} />
                 <ListItem.Content>
                   <ListItem.Title style={styles.title}>
                     {banquet.name}

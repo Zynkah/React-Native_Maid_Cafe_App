@@ -1,36 +1,33 @@
-import { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
-import { Avatar, ListItem } from "react-native-elements";
-import { MENU } from "../shared/MENU";
+import { Tile } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
+import { useSelector } from "react-redux";
+import { baseUrl } from "../shared/baseUrl";
 
 const MenuScreen = ({ navigation }) => {
-  const [menu, setMenu] = useState(MENU);
+  const menu = useSelector((state) => state.menu);
 
   const renderMenuItem = ({ item: menu }) => {
     return (
       <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
-        <ListItem
+        <Tile
           style={styles.container}
           onPress={() => navigation.navigate("MenuInfo", { menu })}
         >
-          <Avatar source={menu.image} size={120} />
-          <ListItem.Content>
-            <ListItem.Title style={styles.name}>{menu.name}</ListItem.Title>
-            <ListItem.Subtitle style={styles.description}>
-              {menu.description}
-            </ListItem.Subtitle>
-            <ListItem.Subtitle style={styles.price}>
-              {menu.price}
-            </ListItem.Subtitle>
-          </ListItem.Content>
-        </ListItem>
+          <Tile
+            title={menu.name}
+            caption={menu.description}
+            featured
+            onPress={() => navigation.navigate("MenuInfo", { menu })}
+            imageSrc={{ uri: baseUrl + menu.image }}
+          />
+        </Tile>
       </Animatable.View>
     );
   };
   return (
     <FlatList
-      data={menu}
+      data={menu.menusArray}
       renderItem={renderMenuItem}
       keyExtractor={(item) => item.id.toString()}
     />

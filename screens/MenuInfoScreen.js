@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { FlatList, StyleSheet, Text, View, Button, Modal } from "react-native";
-import { COMMENTS } from "../shared/COMMENTS";
+// import { COMMENTS } from "../shared/COMMENTS";
 import RenderMenu from "../features/menu/RenderMenu";
 import { Input, Rating } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
+import { useSelector } from "react-redux";
 
 const MenuInfoScreen = ({ route }) => {
   const { menu } = route.params;
-  const [comments, setComments] = useState(COMMENTS);
+  const comments = useSelector((state) => state.comments);
+  const [favorite, setFavorite] = useState(false);
 
   //
 
@@ -60,7 +62,9 @@ const MenuInfoScreen = ({ route }) => {
   return (
     <>
       <FlatList
-        data={comments.filter((comment) => comment.menuId === menu.id)}
+        data={comments.commentsArray.filter(
+          (comment) => comment.menuId === menu.id
+        )}
         renderItem={renderCommentItem}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={{
