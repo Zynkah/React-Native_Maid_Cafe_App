@@ -39,15 +39,19 @@ const MenuScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   name: {
     color: "white",
-    backgroundColor: "rgba(219, 112, 147,0.5)",
+    backgroundColor: "rgba(219, 112, 147,0.8)",
     padding: 10,
     textAlign: "center",
     fontSize: 30,
     margin: 10,
   },
   price: {
-    color: "#FFB6C1",
+    color: "white",
+    fontWeight: "bold",
     fontSize: 20,
+    textShadowColor: "rgba(219, 112, 147,0.8)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 20,
   },
   container: {
     padding: 10,
