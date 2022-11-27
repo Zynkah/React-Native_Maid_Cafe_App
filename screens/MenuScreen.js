@@ -11,12 +11,14 @@ const MenuScreen = ({ navigation }) => {
     return (
       <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
         <Tile
-          style={styles.container}
+          containerStyle={{ alignItems: "center" }}
           onPress={() => navigation.navigate("MenuInfo", { menu })}
         >
           <Tile
+            titleStyle={styles.name}
             title={menu.name}
-            caption={menu.description}
+            captionStyle={styles.price}
+            caption={menu.price}
             featured
             onPress={() => navigation.navigate("MenuInfo", { menu })}
             imageSrc={{ uri: baseUrl + menu.image }}
@@ -35,16 +37,17 @@ const MenuScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  description: {
-    fontSize: 14,
-    color: "#db7094",
-  },
   name: {
-    color: "#cc3366",
-    fontSize: 22,
+    color: "white",
+    backgroundColor: "rgba(219, 112, 147,0.5)",
+    padding: 10,
+    textAlign: "center",
+    fontSize: 30,
+    margin: 10,
   },
   price: {
     color: "#FFB6C1",
+    fontSize: 20,
   },
   container: {
     padding: 10,

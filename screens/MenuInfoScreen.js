@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FlatList, StyleSheet, Text, View, Button, Modal } from "react-native";
-// import { COMMENTS } from "../shared/COMMENTS";
 import RenderMenu from "../features/menu/RenderMenu";
 import { Input, Rating } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
@@ -9,10 +8,6 @@ import { useSelector } from "react-redux";
 const MenuInfoScreen = ({ route }) => {
   const { menu } = route.params;
   const comments = useSelector((state) => state.comments);
-  const [favorite, setFavorite] = useState(false);
-
-  //
-
   const [showModal, setShowModal] = useState(false);
   const [rating, setRating] = useState(5);
   const [author, setAuthor] = useState("");
@@ -28,14 +23,11 @@ const MenuInfoScreen = ({ route }) => {
     setText("");
   };
 
-  //
-
   const renderCommentItem = ({ item }) => {
     return (
       <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
         <View style={styles.commentItem}>
           <Text style={{ fontSize: 14 }}>{item.text}</Text>
-
           <Rating
             type="heart"
             readonly
@@ -49,7 +41,6 @@ const MenuInfoScreen = ({ route }) => {
           >
             {item.rating}
           </Rating>
-
           <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
           <Text
             style={{ fontSize: 12 }}
