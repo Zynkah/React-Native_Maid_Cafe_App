@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { Card } from "react-native-elements";
 import { MENU } from "../shared/MENU";
@@ -32,7 +32,7 @@ const HomeScreen = () => {
   const featMaid = maids.find((item) => item.featured);
 
   return (
-    <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+    <Animatable.View animation="fadeIn" duration={2000} delay={1000}>
       <ScrollView>
         <Text style={styles.title}>Menu</Text>
         <FeaturedItem item={featMenu} />
