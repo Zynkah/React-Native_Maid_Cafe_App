@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { Card, ListItem, Avatar } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
